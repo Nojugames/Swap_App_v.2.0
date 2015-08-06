@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Swap App v.2.0</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">Friends</string>
+    <string name="title_section2">Inbox</string>
+
 
     <string name="hello_world">Hello world!</string>
 
