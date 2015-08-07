@@ -2,6 +2,7 @@ package com.jotskisluibaren.swapappv20;
 
 import java.util.Locale;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -21,9 +22,12 @@ import android.widget.TextView;
 import com.facebook.FacebookSdk;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseUser;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
+
+    static final String TAG = "Swap App";
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -47,7 +51,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         Parse.initialize(this, "Itd6ZHQhxHjuUSiBSsTVFClsYMz1CMXnCYD6W6Fl", "GucwC0yT4Rn99JhMgJWvLHIGT07FWFdIBUQ0hH2A");
         ParseFacebookUtils.initialize(this);
         setContentView(R.layout.activity_main);
-    //Todo: add login function
+
+        //check if there is a user logged in
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            //go to inbox
+        }
+        else {
+            //go to loginActivity
+            showLoginActivity();
+
+        }
+
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -188,6 +203,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
+    }
+    // go to login function
+    private void showLoginActivity() {
+        Intent login = new Intent(this, LoginActivity.class);
+        startActivity(login);
     }
 
 }
