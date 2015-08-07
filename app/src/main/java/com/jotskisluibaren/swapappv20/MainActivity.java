@@ -18,6 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
+import com.parse.Parse;
+import com.parse.ParseFacebookUtils;
+
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
@@ -39,8 +43,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        Parse.initialize(this, "Itd6ZHQhxHjuUSiBSsTVFClsYMz1CMXnCYD6W6Fl", "GucwC0yT4Rn99JhMgJWvLHIGT07FWFdIBUQ0hH2A");
+        ParseFacebookUtils.initialize(this);
         setContentView(R.layout.activity_main);
-
+    //Todo: add login function
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
