@@ -3,6 +3,7 @@ package com.jotskisluibaren.swapappv20;
 import java.util.Locale;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -209,5 +210,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         Intent login = new Intent(this, LoginActivity.class);
         startActivity(login);
     }
+
+
 
 }

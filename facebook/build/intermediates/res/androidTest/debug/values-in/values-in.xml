@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Jotski/StudioProjects/Swap_App%20v2.0/facebook/build/intermediates/bundles/debug/res/values-in/values-in.xml -->
+    <!-- From: file:/E:/Arbete/Appar/Swap_App_v.2.0/facebook/build/intermediates/bundles/debug/res/values-in/values-in.xml -->
     <eat-comment/>
     <string name="messenger_send_button_text">Kirim</string>
 </resources>
