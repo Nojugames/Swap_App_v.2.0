@@ -282,6 +282,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     private Uri fileUri;
 
-    @Override
+
 
 }
