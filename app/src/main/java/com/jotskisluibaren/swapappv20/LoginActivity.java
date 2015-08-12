@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -23,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         ParseUser currentUser = ParseUser.getCurrentUser();
         if ((currentUser != null) && ParseFacebookUtils.isLinked(currentUser)) {
             // Go to main
@@ -75,10 +75,12 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d(MainActivity.TAG, "Oops. The user cancelled the Facebook login.");
                 } else if (user.isNew()) {
                     Log.d(MainActivity.TAG, "User signed up and logged in with Facebook!");
-                    showMainActivity();
+                    //showMainActivity();
+                    finish();
                 } else {
                     Log.d(MainActivity.TAG, "User logged in with Facebook!");
-                    showMainActivity();
+                    //showMainActivity();
+                    finish();
                 }
             }
         });
@@ -87,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
     // go to main function
     private void showMainActivity() {
         Intent main = new Intent(this, MainActivity.class);
+        main.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(main);
     }
 

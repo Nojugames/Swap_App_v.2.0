@@ -32,7 +32,7 @@ import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
 
-public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
+public class MainActivity extends ActionBarActivity implements ActionBar.TabListener, FriendsFragment.OnFragmentInteractionListener, InboxFragment.OnFragmentInteractionListener {
 
     static final String TAG = "Swap App";
 
@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         }
         ///// CAMERA FUNCTIONEN BÖRJAR HÄR
-        super.onCreate(savedInstanceState);
+        //super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // create Intent to take a picture and return control to the calling application
@@ -136,8 +136,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id){
+            case R.id.action_logout:
+                ParseUser.logOut();
+                showLoginActivity();
+                break;
+        // if (id == R.id.action_settings) {
+        //    return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -158,6 +163,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }
 
+    //Needed to get fragments to work
+    @Override
+    public void onFragmentInteraction(String id) {
+
+    }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -172,7 +183,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            switch (position) {
+                case 0:
+                    return new FriendsFragment();
+                case 1:
+                    return new InboxFragment();
+            }
+            return null;
+           // return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
